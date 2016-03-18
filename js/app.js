@@ -21,17 +21,16 @@ Enemy.prototype.update = function(dt) {
         this.x = -101;
         this.y = this.setY(this.row);
     } else if (this.x <= -102) {
-        this.x = 909
+        this.x = 909;
         this.y = this.setY(this.row);
     }
 
     //handles player collision
-    //CURRENT: both are equal, but at only 1 pixel
     if (this.x < player.x + 75 &&
         this.x + 75 > player.x &&
         this.y < player.y + 83 &&
         this.y + 83 > player.y) {
-        reset();
+        gameOver();
     }
 };
 
@@ -152,7 +151,23 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
+function gameOver() {
+    document.getElementById('game-over').style.display = 'block';
+    active = false;
+}
+
 function reset() {
+    document.getElementById('game-over').style.display = 'none';
     player.x = 404;
     player.y = 392;
+    for (var enemy in en1) {
+        en1[enemy].x = (Math.round(Math.random() * 10) * 90.9);
+    }
+    for (var enemy in en2) {
+        en2[enemy].x = (Math.round(Math.random() * 10) * 90.9);
+    }
+    for (var enemy in en3) {
+        en3[enemy].x = (Math.round(Math.random() * 10) * 90.9);
+    }
+    active = true;
 }

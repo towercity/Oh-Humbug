@@ -13,6 +13,8 @@
  * the canvas' context (ctx) object globally available to make writing app.js
  * a little simpler to work with.
  */
+var active = true;
+
 var Engine = (function(global) {
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
@@ -55,7 +57,9 @@ var Engine = (function(global) {
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame.
          */
-        win.requestAnimationFrame(main);
+        if(active === true) {
+            win.requestAnimationFrame(main);
+        }
     }
 
     /* This function does some initial setup that should only occur once,
@@ -63,6 +67,10 @@ var Engine = (function(global) {
      * game loop.
      */
     function init() {
+        doc.getElementById('replay').addEventListener('click', function() {
+            init();
+        });
+
         reset();
         lastTime = Date.now();
         main();
