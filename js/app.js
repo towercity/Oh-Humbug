@@ -6,6 +6,9 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
+    this.x = (Math.round(Math.random() * 40) * 10.1);
+    this.y = (Math.round(Math.random() * 2) * 83) + 60;
+    this.speed = 100;
 };
 
 // Update the enemy's position, required method for game
@@ -42,7 +45,7 @@ Player.prototype.handleInput = function() {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var player = new Player(),
-    numEnemies = 10,
+    numEnemies = 3,
     allEnemies = new Array(numEnemies);
 
 for (var i = 0; i < allEnemies.length; i++) {
