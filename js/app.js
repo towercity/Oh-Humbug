@@ -1,14 +1,14 @@
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy1 = function() {
     this.sprite = 'images/enemy-bug.png';
     this.x = (Math.round(Math.random() * 10) * 90.9);
-    this.y = (Math.round(Math.random() * 2) * 83) + 60;
+    this.y = (Math.round(Math.random()) * 83) + 226;
     this.speed = (Math.round(Math.random() * 20) * 10) + 50;
 };
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
+Enemy1.prototype.update = function(dt) {
     var locAdd = (dt * this.speed) * 1.01;
     this.x += locAdd;
 
@@ -16,7 +16,7 @@ Enemy.prototype.update = function(dt) {
     //re-randomizes y axis and speed
     if (this.x >= 909) {
       this.x = -101;
-      this.y = (Math.round(Math.random() * 2) * 83) + 60;
+      this.y = (Math.round(Math.random()) * 83) + 226;
       this.speed = (Math.round(Math.random() * 20) * 10) + 100;
     }
 
@@ -31,7 +31,7 @@ Enemy.prototype.update = function(dt) {
 };
 
 // Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
+Enemy1.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
@@ -84,11 +84,11 @@ Player.prototype.handleInput = function(keyCode) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var player = new Player(),
-    numEnemies = 10,
+    numEnemies = 7,
     allEnemies = new Array(numEnemies);
 
 for (var i = 0; i < allEnemies.length; i++) {
-    allEnemies[i] = new Enemy();
+    allEnemies[i] = new Enemy1();
 }
 
 // This listens for key presses and sends the keys to your
