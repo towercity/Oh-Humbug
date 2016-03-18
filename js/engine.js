@@ -90,7 +90,13 @@ var Engine = (function(global) {
      * render methods.
      */
     function updateEntities(dt) {
-        allEnemies.forEach(function(enemy) {
+        en1.forEach(function(enemy) {
+            enemy.update(dt);
+        });
+        en2.forEach(function(enemy) {
+            enemy.update(dt);
+        });
+        en3.forEach(function(enemy) {
             enemy.update(dt);
         });
         player.update();
@@ -111,7 +117,7 @@ var Engine = (function(global) {
                 'images/stone-block.png',
                 'images/stone-block.png',
                 'images/stone-block.png',
-                'images/stone-block.png',  
+                'images/stone-block.png',
                 'images/grass-block.png'
             ],
             numRows = 6,
@@ -146,7 +152,13 @@ var Engine = (function(global) {
         /* Loop through all of the objects within the allEnemies array and call
          * the render function you have defined.
          */
-        allEnemies.forEach(function(enemy) {
+        en1.forEach(function(enemy) {
+            enemy.render();
+        });
+        en2.forEach(function(enemy) {
+            enemy.render();
+        });
+        en3.forEach(function(enemy) {
             enemy.render();
         });
 

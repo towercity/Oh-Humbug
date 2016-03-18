@@ -15,11 +15,14 @@ Enemy.prototype.update = function(dt) {
     this.x += locAdd;
 
     //moves enemy back to the far edge of the screen and
-    //re-randomizes y axis and speed
+    //re-randomizes y axis
+    //Right exit
     if (this.x >= 909) {
-      this.x = -101;
-      this.y = this.setY(this.row);
-      this.speed = (Math.round(Math.random() * 20) * 10) + 100;
+        this.x = -101;
+        this.y = this.setY(this.row);
+    } else if (this.x <= -102) {
+        this.x = 909
+        this.y = this.setY(this.row);
     }
 
     //handles player collision
@@ -41,7 +44,7 @@ Enemy.prototype.setY = function(row) {
         case 'bottom':
             return (Math.round(Math.random()) * 83) + 226;
     }
-}
+};
 
 var Enemy1 = function() {
     Enemy.call(this);
@@ -51,6 +54,24 @@ var Enemy1 = function() {
     this.speed = (Math.round(Math.random() * 20) * 10) + 50;
 };
 Enemy1.prototype = Object.create(Enemy.prototype);
+
+var Enemy2 = function() {
+    Enemy.call(this);
+    this.sprite = 'images/enemy-bug-2.png';
+    this.row = "middle";
+    this.y = 143;
+    this.speed = ((Math.round(Math.random() * 20) * 10) * -1) - 150;
+};
+Enemy2.prototype = Object.create(Enemy.prototype);
+
+var Enemy3 = function() {
+    Enemy.call(this);
+    this.sprite = 'images/enemy-bug-3.png';
+    this.row = "top";
+    this.y = 60;
+    this.speed = (Math.round(Math.random() * 20) * 10) + 150;
+};
+Enemy3.prototype = Object.create(Enemy.prototype);
 
 // Now write your own player class
 var Player = function() {
@@ -101,11 +122,21 @@ Player.prototype.handleInput = function(keyCode) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var player = new Player(),
-    numEnemies = 7,
-    allEnemies = new Array(numEnemies);
+    enemy1s = 7,
+    enemy2s = 4,
+    enemy3s = 5,
+    en1 = new Array(enemy1s),
+    en2 = new Array(enemy2s),
+    en3 = new Array(enemy3s);
 
-for (var i = 0; i < allEnemies.length; i++) {
-    allEnemies[i] = new Enemy1();
+for (var i = 0; i < en1.length; i++) {
+    en1[i] = new Enemy1();
+}
+for (var i = 0; i < en2.length; i++) {
+    en2[i] = new Enemy2();
+}
+for (var i = 0; i < en3.length; i++) {
+    en3[i] = new Enemy3();
 }
 
 // This listens for key presses and sends the keys to your
