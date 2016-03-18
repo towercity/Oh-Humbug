@@ -26,7 +26,9 @@ Enemy.prototype.render = function() {
 
 // Now write your own player class
 var Player = function() {
-    this.sprite = 'images/char-horn-girl.png';
+    this.sprite = 'images/char-boy.png';
+    this.x = 202;
+    this.y = 393;
 };
 
 Player.prototype.update = function(dt) {
@@ -34,7 +36,7 @@ Player.prototype.update = function(dt) {
 };
 
 Player.prototype.render = function() {
-  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 Player.prototype.handleInput = function() {
