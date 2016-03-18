@@ -1,10 +1,5 @@
 // Enemies our player must avoid
 var Enemy = function() {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
     this.x = (Math.round(Math.random() * 10) * 50.5);
     this.y = (Math.round(Math.random() * 2) * 83) + 60;
@@ -36,18 +31,42 @@ var Player = function() {
     this.sprite = 'images/char-boy.png';
     this.x = 202;
     this.y = 393;
+    this.direction;
 };
 
 Player.prototype.update = function() {
-  //null
+    switch (this.direction) {
+        case 'left':
+            this.x -= 101;
+            break;
+        case 'right':
+            this.x += 101;
+            break;
+        case 'up':
+            this.y -= 83;
+            break;
+        case 'down':
+            this.y += 83;
+            break;
+    }
+    if (this.x < 0 ||
+        this.x > 500 ||
+        this.y > 400) {
+        console.log("out" + this.direction);
+        active = false;
+    } else if (this.y < 0) {
+        console.log("win");
+        active = false;
+     }
+  this.direction = null;
 };
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.handleInput = function() {
-  //null
+Player.prototype.handleInput = function(keyCode) {
+    this.direction = keyCode;
 };
 
 // Now instantiate your objects.
