@@ -1,7 +1,7 @@
 // Enemies our player must avoid
 var Enemy = function() {
     this.sprite = 'images/enemy-bug.png';
-    this.x = (Math.round(Math.random() * 10) * 50.5);
+    this.x = (Math.round(Math.random() * 10) * 90.9);
     this.y = (Math.round(Math.random() * 2) * 83) + 60;
     this.speed = (Math.round(Math.random() * 20) * 10) + 50;
 };
@@ -14,7 +14,7 @@ Enemy.prototype.update = function(dt) {
 
     //moves enemy back to the far edge of the screen and
     //re-randomizes y axis and speed
-    if (this.x >= 606) {
+    if (this.x >= 909) {
       this.x = -101;
       this.y = (Math.round(Math.random() * 2) * 83) + 60;
       this.speed = (Math.round(Math.random() * 20) * 10) + 100;
@@ -38,8 +38,9 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 var Player = function() {
     this.sprite = 'images/char-boy.png';
-    this.x = 202;
-    this.y = 392;
+    //x and y are set in the reset() below
+    this.x;
+    this.y;
     this.direction;
 };
 
@@ -59,13 +60,14 @@ Player.prototype.update = function() {
             break;
     }
     if (this.x < 0 ||
-        this.x > 500 ||
+        this.x > 900 ||
         this.y > 400) {
+        //out of bounds
         reset();
-        active = false;
     } else if (this.y < 0) {
+        //win!
         console.log("win");
-        active = false;
+        reset();
      }
   this.direction = null;
 };
@@ -82,7 +84,7 @@ Player.prototype.handleInput = function(keyCode) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var player = new Player(),
-    numEnemies = 5,
+    numEnemies = 10,
     allEnemies = new Array(numEnemies);
 
 for (var i = 0; i < allEnemies.length; i++) {
@@ -103,6 +105,6 @@ document.addEventListener('keyup', function(e) {
 });
 
 function reset() {
-    player.x = 202;
+    player.x = 404;
     player.y = 392;
 }

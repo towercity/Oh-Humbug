@@ -24,7 +24,7 @@ var Engine = (function(global) {
         ctx = canvas.getContext('2d'),
         lastTime;
 
-    canvas.width = 505;
+    canvas.width = 909;
     canvas.height = 606;
     doc.body.appendChild(canvas);
 
@@ -115,7 +115,7 @@ var Engine = (function(global) {
                 'images/grass-block.png'    // Row 2 of 2 of grass
             ],
             numRows = 6,
-            numCols = 5,
+            numCols = 9,
             row, col;
 
         /* Loop through the number of rows and columns we've defined above
@@ -157,10 +157,6 @@ var Engine = (function(global) {
      * handle game reset states - maybe a new game menu or a game over screen
      * those sorts of things. It's only called once by the init() method.
      */
-    function reset() {
-        player.x = 202;
-        player.y = 392;
-    }
 
     /* Go ahead and load all of the images we know we're going to need to
      * draw our game level. Then set init as the callback method, so that when
