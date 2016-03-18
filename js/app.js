@@ -22,8 +22,11 @@ Enemy.prototype.update = function(dt) {
 
     //handles player collision
     //CURRENT: both are equal, but at only 1 pixel
-    if (this.y === player.y && Math.round(this.x) === player.x) {
-        console.log("loss");
+    if (this.x < player.x + 75 &&
+        this.x + 75 > player.x &&
+        this.y < player.y + 83 &&
+        this.y + 83 > player.y) {
+        reset();
     }
 };
 
@@ -58,7 +61,7 @@ Player.prototype.update = function() {
     if (this.x < 0 ||
         this.x > 500 ||
         this.y > 400) {
-        console.log("out" + this.direction);
+        reset();
         active = false;
     } else if (this.y < 0) {
         console.log("win");
@@ -98,3 +101,8 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+function reset() {
+    player.x = 202;
+    player.y = 392;
+}
