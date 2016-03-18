@@ -103,8 +103,7 @@ Player.prototype.update = function() {
         reset();
     } else if (this.y < 0) {
         //win!
-        console.log("win");
-        reset();
+        victory();
      }
   this.direction = null;
 };
@@ -156,8 +155,14 @@ function gameOver() {
     active = false;
 }
 
+function victory() {
+    document.getElementById('victory').style.display = 'block';
+    active = false;
+}
+
 function reset() {
     document.getElementById('game-over').style.display = 'none';
+    document.getElementById('victory').style.display = 'none';
     player.x = 404;
     player.y = 392;
     for (var enemy in en1) {

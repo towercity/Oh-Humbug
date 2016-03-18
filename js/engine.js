@@ -67,7 +67,11 @@ var Engine = (function(global) {
      * game loop.
      */
     function init() {
-        doc.getElementById('replay').addEventListener('click', function() {
+        doc.getElementById('replayv').addEventListener('click', function() {
+            ctx.clearRect(0, 0, canvas.width, 60);
+            init();
+        });
+        doc.getElementById('replayl').addEventListener('click', function() {
             init();
         });
 
