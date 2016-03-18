@@ -1,14 +1,16 @@
 // Enemies our player must avoid
-var Enemy1 = function() {
-    this.sprite = 'images/enemy-bug.png';
+var Enemy = function () {
     this.x = (Math.round(Math.random() * 10) * 90.9);
-    this.y = (Math.round(Math.random()) * 83) + 226;
-    this.speed = (Math.round(Math.random() * 20) * 10) + 50;
+};
+
+// Draw the enemy on the screen, required method for game
+Enemy.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
-Enemy1.prototype.update = function(dt) {
+Enemy.prototype.update = function(dt) {
     var locAdd = (dt * this.speed) * 1.01;
     this.x += locAdd;
 
@@ -16,7 +18,7 @@ Enemy1.prototype.update = function(dt) {
     //re-randomizes y axis and speed
     if (this.x >= 909) {
       this.x = -101;
-      this.y = (Math.round(Math.random()) * 83) + 226;
+      this.y = this.setY(this.row);
       this.speed = (Math.round(Math.random() * 20) * 10) + 100;
     }
 
@@ -30,10 +32,25 @@ Enemy1.prototype.update = function(dt) {
     }
 };
 
-// Draw the enemy on the screen, required method for game
-Enemy1.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+Enemy.prototype.setY = function(row) {
+    switch (row) {
+        case 'top':
+            return 60;
+        case 'middle':
+            return 143;
+        case 'bottom':
+            return (Math.round(Math.random()) * 83) + 226;
+    }
+}
+
+var Enemy1 = function() {
+    Enemy.call(this);
+    this.sprite = 'images/enemy-bug.png';
+    this.row = "bottom";
+    this.y = (Math.round(Math.random()) * 83) + 226;
+    this.speed = (Math.round(Math.random() * 20) * 10) + 50;
 };
+Enemy1.prototype = Object.create(Enemy.prototype);
 
 // Now write your own player class
 var Player = function() {
