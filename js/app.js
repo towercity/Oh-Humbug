@@ -19,6 +19,12 @@ Enemy.prototype.update = function(dt) {
       this.y = (Math.round(Math.random() * 2) * 83) + 60;
       this.speed = (Math.round(Math.random() * 20) * 10) + 100;
     }
+
+    //handles player collision
+    //CURRENT: both are equal, but at only 1 pixel
+    if (this.y === player.y && Math.round(this.x) === player.x) {
+        console.log("loss");
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -30,7 +36,7 @@ Enemy.prototype.render = function() {
 var Player = function() {
     this.sprite = 'images/char-boy.png';
     this.x = 202;
-    this.y = 393;
+    this.y = 392;
     this.direction;
 };
 
