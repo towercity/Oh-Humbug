@@ -27,7 +27,7 @@ var Engine = (function(global) {
         lastTime;
 
     canvas.width = 909;
-    canvas.height = 606;
+    canvas.height = 666;
     doc.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
@@ -68,7 +68,6 @@ var Engine = (function(global) {
      */
     function init() {
         doc.getElementById('replayv').addEventListener('click', function() {
-            ctx.clearRect(0, 0, canvas.width, 60);
             init();
         });
         doc.getElementById('replayl').addEventListener('click', function() {
@@ -90,8 +89,13 @@ var Engine = (function(global) {
      * on the entities themselves within your app.js file).
      */
     function update(dt) {
+        //Draw the score at the bottom of the screen
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'black';
+        ctx.font = '50px Arial';
+        ctx.fillText("Score: " + score, 15, 635);
+
         updateEntities(dt);
-        // checkCollisions();
     }
 
     /* This is called by the update function and loops through all of the
@@ -112,6 +116,7 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
         player.update();
+        coin.update();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -164,6 +169,8 @@ var Engine = (function(global) {
         /* Loop through all of the objects within the allEnemies array and call
          * the render function you have defined.
          */
+        coin.render();
+        player.render();
         en1.forEach(function(enemy) {
             enemy.render();
         });
@@ -173,8 +180,6 @@ var Engine = (function(global) {
         en3.forEach(function(enemy) {
             enemy.render();
         });
-
-        player.render();
     }
 
     /* This function does nothing but it could have been a good place to
@@ -193,7 +198,8 @@ var Engine = (function(global) {
         'images/enemy-bug.png',
         'images/enemy-bug-2.png',
         'images/enemy-bug-3.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/Gem Green.png'
     ]);
     Resources.onReady(init);
 
