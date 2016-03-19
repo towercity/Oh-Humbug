@@ -20,6 +20,7 @@ Enemy.prototype.update = function(dt) {
     if (this.x >= 909) {
         this.x = -101;
         this.y = this.setY(this.row);
+    //Left exit
     } else if (this.x <= -102) {
         this.x = 909;
         this.y = this.setY(this.row);
@@ -98,11 +99,18 @@ Player.prototype.update = function() {
             this.y += 83;
             break;
     }
-    if (this.x < 0 ||
-        this.x > 900 ||
-        this.y > 400) {
-        //out of bounds
-        reset();
+
+    //stops player from leaving the screen
+    //left exit
+    if (this.x < 0) {
+        this.x += 101;
+    //right exit
+    } else if (this.x > 900) {
+        this.x -= 101;
+    //bottom exit
+    } else if (this.y > 400) {
+        this.y -= 83;
+    //top exit
     } else if (this.y < 0) {
         //win!
         victory();
