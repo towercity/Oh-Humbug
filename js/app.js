@@ -21,8 +21,6 @@ for (var i = 0; i < en3.length; i++) {
     en3[i] = new Enemy3();
 }
 
-song.fadeIn(0.5, 150);
-
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
