@@ -57,10 +57,10 @@ function reset() {
     for (var enemy in en1) {
         en1[enemy].x = (Math.round(Math.random() * 10) * 90.9);
     }
-    for (var enemy in en2) {
+    for (enemy in en2) {
         en2[enemy].x = (Math.round(Math.random() * 10) * 90.9);
     }
-    for (var enemy in en3) {
+    for (enemy in en3) {
         en3[enemy].x = (Math.round(Math.random() * 10) * 90.9);
     }
     active = true;
