@@ -79,9 +79,9 @@ Enemy3.prototype = Object.create(Enemy.prototype);
 var Player = function() {
     this.sprite = 'images/char-boy.png';
     //x and y are set in the reset() below
-    this.x;
-    this.y;
-    this.direction;
+    this.x = 0;
+    this.y = 0;
+    this.direction = null;
 };
 
 Player.prototype.update = function() {
