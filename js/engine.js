@@ -46,6 +46,7 @@ var Engine = (function(global) {
         /* Call our update/render functions, pass along the time delta to
          * our update function since it may be used for smooth animation.
          */
+        checkCollisions();
         update(dt);
         render();
 
@@ -77,6 +78,43 @@ var Engine = (function(global) {
         reset();
         lastTime = Date.now();
         main();
+    }
+
+    //Checks for collisions and alters game accordingly
+    function checkCollisions() {
+        //handles enemy player collision
+        en1.forEach(function(enemy) {
+            if (enemy.x < player.x + 75 &&
+                enemy.x + 75 > player.x &&
+                enemy.y < player.y + 83 &&
+                enemy.y + 83 > player.y) {
+                gameOver();
+            }
+        });
+        en2.forEach(function(enemy) {
+            if (enemy.x < player.x + 75 &&
+                enemy.x + 75 > player.x &&
+                enemy.y < player.y + 83 &&
+                enemy.y + 83 > player.y) {
+                gameOver();
+            }
+        });
+        en3.forEach(function(enemy) {
+            if (enemy.x < player.x + 75 &&
+                enemy.x + 75 > player.x &&
+                enemy.y < player.y + 83 &&
+                enemy.y + 83 > player.y) {
+                gameOver();
+            }
+        });
+
+        //handles player coin collison
+        if (coin.x < player.x + 75 &&
+            coin.x + 75 > player.x &&
+            coin.y < player.y + 83 &&
+            coin.y + 83 > player.y) {
+            coin.collect();
+        }
     }
 
     /* This function is called by main (our game loop) and itself calls all

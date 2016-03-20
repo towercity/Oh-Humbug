@@ -1,6 +1,8 @@
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
+// TODO: put all enemies in one array
+// TODO: made an array of coins
 var enemy1s = 7,
     enemy2s = 4,
     enemy3s = 5,

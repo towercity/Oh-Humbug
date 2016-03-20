@@ -27,14 +27,6 @@ Enemy.prototype.update = function(dt) {
         this.x = 909;
         this.y = this.setY(this.row);
     }
-
-    //handles player collision
-    if (this.x < player.x + 75 &&
-        this.x + 75 > player.x &&
-        this.y < player.y + 83 &&
-        this.y + 83 > player.y) {
-        gameOver();
-    }
 };
 
 Enemy.prototype.setY = function(row) {
@@ -154,14 +146,6 @@ Coin.prototype.dissapear = function() {
 };
 
 Coin.prototype.update = function() {
-    //checks for collision with player
-    if (this.x < player.x + 75 &&
-        this.x + 75 > player.x &&
-        this.y < player.y + 83 &&
-        this.y + 83 > player.y) {
-        this.collect();
-    }
-
     //counts down respawn by frames
     if (this.visible === false) {
         if (this.wait > 0) {
