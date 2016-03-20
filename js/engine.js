@@ -115,6 +115,11 @@ var Engine = (function(global) {
             coin.y + 83 > player.y) {
             coin.collect();
         }
+
+        //Checks if player has collided with the victory canal
+        if (player.y < 0) {
+            victory();
+         }
     }
 
     /* This function is called by main (our game loop) and itself calls all
@@ -218,6 +223,16 @@ var Engine = (function(global) {
         en3.forEach(function(enemy) {
             enemy.render();
         });
+    }
+
+    function gameOver() {
+        document.getElementById('game-over').style.display = 'block';
+        active = false;
+    }
+
+    function victory() {
+        document.getElementById('victory').style.display = 'block';
+        active = false;
     }
 
     /* This function does nothing but it could have been a good place to

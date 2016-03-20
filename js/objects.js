@@ -105,10 +105,7 @@ Player.prototype.update = function() {
     } else if (this.y > 400) {
         this.y -= 83;
     //top exit
-    } else if (this.y < 0) {
-        //win!
-        victory();
-     }
+    }
   this.direction = null;
 };
 

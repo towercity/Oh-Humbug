@@ -36,16 +36,6 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-function gameOver() {
-    document.getElementById('game-over').style.display = 'block';
-    active = false;
-}
-
-function victory() {
-    document.getElementById('victory').style.display = 'block';
-    active = false;
-}
-
 function reset() {
     score = 0;
     document.getElementById('game-over').style.display = 'none';
