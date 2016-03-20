@@ -54,14 +54,14 @@ function reset() {
     coin.y += 1000;
     coin.wait = 300;
     coin.visible = false;
-    for (var enemy in en1) {
-        en1[enemy].x = (Math.round(Math.random() * 10) * 90.9);
-    }
-    for (enemy in en2) {
-        en2[enemy].x = (Math.round(Math.random() * 10) * 90.9);
-    }
-    for (enemy in en3) {
-        en3[enemy].x = (Math.round(Math.random() * 10) * 90.9);
-    }
+    en1.forEach(function(enemy){
+        enemy.x = (Math.round(Math.random() * 10) * 90.9);
+    });
+    en2.forEach(function(enemy){
+        enemy.x = (Math.round(Math.random() * 10) * 90.9);
+    });
+    en3.forEach(function(enemy){
+        enemy.x = (Math.round(Math.random() * 10) * 90.9);
+    });
     active = true;
 }
