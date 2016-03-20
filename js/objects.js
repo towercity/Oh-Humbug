@@ -1,3 +1,5 @@
+'use stict';
+
 // Enemies our player must avoid
 var Enemy = function () {
     this.x = (Math.round(Math.random() * 10) * 90.9);
